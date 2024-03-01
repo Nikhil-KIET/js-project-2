@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: aqua;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+        }
+        #triangle {
+            z-index: -1;
+      width: 0;
+      height: 0;
+      border-bottom: 100px solid red;
+      border-right: 100px solid transparent;
+    }
+
+#shap {
+    position: absolute;
+    z-index: 1;
+  width: 100px;
+  height: 100px;
+  background:violet;
+  border-radius: 50%
+}
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="circle">
+            <div id="triangle">
+
+            </div>
+            <div id="shap">
+
+            </div>
+        </div>
+        <button id="btn1">CHANGE SHAPE</button>
+        <button id="btn2">CHANGE COLOR</button>
+    </div>
+
+    <script>
+        let cir = document.querySelector('.circle');
+        let cc = document.getElementById('btn2');
+        let arr = ['blue', 'black', 'red', 'yellow', 'purple'];
+        let cs=document.getElementById('btn1');
+
+        cc.addEventListener('click', () => {
+
+            let color = Math.floor(Math.random() * 5);
+            cir.style.backgroundColor = arr[color];
+            
+        });
+
+        cs.addEventListener('click',()=>{
+            let shape1=document.getElementById('shap');
+            let shape2=document.getElementById('triangle');
+            let s1=shape1.style.zIndex;
+            let s2=shape2.style.zIndex;
+            if(s1==-1 && s2!=-1){
+                shape1.style.zIndex='1';
+                shape2.style.zIndex='-1';
+            }else{
+                shape1.style.zIndex='-1';
+                shape2.style.zIndex='1';
+
+            }
+
+
+        });
+
+        
+
+    </script>
+</body>
+</html>
